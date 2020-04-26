@@ -12,6 +12,9 @@ build: $(APP)
 $(APP): $(SOURCES)
 	go build -o $@ -v $^
 
+install: build
+	@cp $(APP) /usr/bin/$(APP)
+
 clean:
 	-rm -f $(APP)
 
