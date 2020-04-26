@@ -1,0 +1,18 @@
+admins:
+    - 1
+server_admins:
+    - 1
+mod_admins:
+    - 1
+uploaders:
+    - 1
+directory: ""
+server_dir: ""
+scripts_dir: ""
+steamcmd: ""
+steam_user: ""
+steam_pass: ""
+uid: 1000
+gid: 1000
+discord_token: ""
+discord_channel: ""
