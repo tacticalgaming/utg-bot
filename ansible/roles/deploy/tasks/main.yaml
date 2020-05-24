@@ -2,8 +2,9 @@
 
 - name: Copy binary
   copy:
-      src: utg-bot
+      src: ../utg-bot
       dest: /usr/bin/utg-bot
+      mode: '0755'
 
 - name: Template configuration file
   template:
