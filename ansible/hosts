@@ -1,2 +1,2 @@
 [game]
-tacticalgaming.kiev.ua ansible_user=root
+tacticalgaming.kiev.ua ansible_user=root ansible_port=1022
