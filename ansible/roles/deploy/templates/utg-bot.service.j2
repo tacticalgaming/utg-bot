@@ -1,0 +1,11 @@
+[Unit]
+Description=UTG Discord Bot
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/utg-bot
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,26 @@
+---
+
+- name: Copy binary
+  copy:
+      src: utg-bot
+      dest: /usr/bin/utg-bot
+
+- name: Template configuration file
+  template:
+      src: utg-bot.yaml.j2
+      dest: /etc/utg-bot.yaml
+
+- name: Template service file
+  template:
+      src: utg-bot.service.j2
+      dest: /etc/systemd/system/utg-bot.service
+      owner: arma
+      group: arma
+
+- name: Enable and restart service
+  systemd:
+      name: utg-bot
+      daemon_reload: yes
+      state: restarted
+      enabled: yes
+      masked: no

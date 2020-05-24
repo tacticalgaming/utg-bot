@@ -1,0 +1,31 @@
+language: go
+go: 
+  - "1.14"
+before_install:
+  - openssl aes-256-cbc -K $encrypted_92725ca94bf5_key -iv $encrypted_92725ca94bf5_iv -in deploy-key.enc -out deploy-key -d
+  - openssl aes-256-cbc -K $encrypted_89fc3a45da73_key -iv $encrypted_89fc3a45da73_iv -in ansible/roles/deploy/vars/main.yaml.enc -out ansible/roles/deploy/vars/main.yaml -d
+  - eval "$(ssh-agent -s)"
+  - chmod 0600 ./deploy-key
+  - ssh-add ./deploy-key
+install:
+- pyenv global 3.7
+- pip3 install ansible
+- "./configure"
+- make
+script:
+- make test
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: cd ansible && ansible-playbook -i hosts ansible.yaml 
+    on:
+      branch: master
+notifications:
+  webhooks:
+    urls:
+      - http://savageking.io:12811/travis
+    on_success: always
+    on_failure: always 
+    on_start:   always 
+    on_cancel:  always
+    on_error:   always

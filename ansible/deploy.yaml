@@ -1,0 +1,6 @@
+---
+
+- hosts: [game]
+  become: yes
+  roles:
+    - role: deploy

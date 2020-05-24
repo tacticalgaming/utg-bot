@@ -1,1 +1,3 @@
 utg-bot
+deploy-key
+ansible/roles/deploy/vars/main.yaml
